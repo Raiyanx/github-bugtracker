@@ -1,7 +1,9 @@
 import styles from "../styles/nav-bar.module.css"
 import NavigationBarItem from "./nav-bar-item"
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function NavigationBar() {
+  const { data: session } = useSession()
   return (
     <div className={styles.header}>
       <div className={styles.title}>
@@ -9,8 +11,10 @@ export default function NavigationBar() {
       </div>
       <div className={styles.headeritems}>
         <NavigationBarItem name="Home" href="/projects" />
-        <NavigationBarItem name="Sign In" />
-        <NavigationBarItem name="Sign Out" />
+        {session ?
+          <NavigationBarItem name="Sign Out" onClick={() => signOut()} />
+          : <NavigationBarItem name="Sign In" onClick={() => signIn()} />
+        }
       </div>
     </div>
   )

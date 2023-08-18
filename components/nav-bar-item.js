@@ -6,6 +6,8 @@ export default function NavigationBarItem(props) {
   function handleClick() {
     if (props.href)
       router.replace(props.href)
+    else
+      props.onClick()
   }
   return (
     <button className={styles.navbaritem} onClick={handleClick}>
