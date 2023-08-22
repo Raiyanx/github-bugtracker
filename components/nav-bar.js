@@ -3,7 +3,9 @@ import NavigationBarItem from "./nav-bar-item"
 import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function NavigationBar() {
-  const { data: session } = useSession()
+  const { data: session, ...others } = useSession()
+  console.log(session)
+  console.log(others)
   return (
     <div className={styles.header}>
       <div className={styles.title}>
