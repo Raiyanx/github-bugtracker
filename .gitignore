@@ -1,4 +1,22 @@
+# Next #
 node_modules/
 .next/
+
+# Environments #
 .env
 .env.local
+.venv/
+
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+
+# Backup files # 
+*.bak 
+
+.my_pgpass
+.pg_service.conf
