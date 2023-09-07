@@ -1,12 +1,18 @@
 from django.db import models
 
 class User(models.Model):
-  name = models.CharField(max_length=200)
+  name = models.CharField(max_length=200, null=True)
   github_email = models.EmailField()
-  repos = models.ManyToManyField("Repo")
+  projects = models.ManyToManyField("Project")
+  active = models.BooleanField(default=True)
+  def __str__(self):
+    return {self.name, self.github_email}
 
-class Repo(models.Model):
+class Project(models.Model):
   name = models.CharField(max_length=200)
-  owner = models.CharField(max_length=200)
+  own_project = models.BooleanField()
+  owner_email = models.EmailField()
   collaborators = models.ManyToManyField("User")
   link = models.CharField(max_length=1000)
+  def __str__(self):
+    return {self.name, self.owner}

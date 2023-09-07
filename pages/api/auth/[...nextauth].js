@@ -34,6 +34,9 @@ export default NextAuth({
       })
       let publicRepos = []
       let privateRepos = []
+
+
+
       response.data.forEach(repo => {
         if (repo.private)
           privateRepos.push(repo.full_name)

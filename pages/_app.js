@@ -8,7 +8,9 @@ export default function App({
 }) {
   return (
     <SessionProvider session={session}>
-      <NavigationBar />
+      {!pageProps.isSignIn &&
+        <NavigationBar />
+      }
       <div className="component">
         <Component {...pageProps} />
       </div>
