@@ -2,7 +2,7 @@ import NextAuth from "next-auth/next";
 import GithubProvider from "next-auth/providers/github"
 import { Octokit } from "@octokit/core";
 
-export default NextAuth({
+export const authOptions = {
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID,
@@ -49,4 +49,6 @@ export default NextAuth({
       return session
     }
   }
-})
+}
+
+export default NextAuth(authOptions)

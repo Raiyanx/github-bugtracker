@@ -1,10 +1,11 @@
 .header {
   height: 8vh;
   width: 100vw;
-  background-color: rgb(159, 201, 236);
+  background-color: var(--secondary);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: var(--text);
 }
 
 .title {
@@ -29,9 +30,19 @@
   padding-left: 5px;
   padding-right: 5px;
   width: 100px;
-  background-color: rgba(97, 159, 210, 0.398);
+  background-color: var(--secondary);
   margin: 10px;
   font-size: 20px;
-  border: 0px;
   cursor: pointer;
+  border-radius: 6px;
+  border: 2px solid var(--border);
+  color: var(--button-text);
+}
+
+.navbaritem:hover {
+  background-color: var(--button-hover);
+}
+
+.navbaritem:active {
+  background-color: var(--button-active);
 }

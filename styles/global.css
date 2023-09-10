@@ -1,8 +1,18 @@
+@import url("/styles/variables.css");
+
 body {
   margin: 0px;
+  box-sizing: border-box;
 }
 
 .component {
-  margin: 10px;
+  padding: 10px;
   font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.welcome {
+  padding: 0px;
 }

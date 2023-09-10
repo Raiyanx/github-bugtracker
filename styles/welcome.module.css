@@ -1,0 +1,41 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--primary);
+  color: var(--text)
+}
+
+.title {
+  font-size: 50px;
+  margin-top: 12vh;
+  margin-bottom: 24vh;
+}
+
+.options {
+  display: flex;
+  width: 100vw;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.button {
+  height: 10vh;
+  width: 30vw;
+  font-size: 27px;
+  background-color: var(--secondary);
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  color: var(--button-text);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+}
+
+.button:active {
+  background-color: var(--button-active);
+}
