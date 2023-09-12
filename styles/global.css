@@ -8,9 +8,6 @@ body {
 .component {
   padding: 10px;
   font-size: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 }
 
 .welcome {

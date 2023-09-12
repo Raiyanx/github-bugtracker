@@ -33,21 +33,24 @@ export default function App({
   const router = useRouter()
   return (
     <SessionProvider session={session}>
-      <AuthWrapper>
-        {router.pathname !== '/welcome' &&
-          <div>
-            <NavigationBar />
-            <div className="component">
-              <Component {...pageProps} />
-            </div>
-          </div>
-        }
-        {router.pathname === '/welcome' &&
-          <div className="component welcome">
+      {/* <AuthWrapper> */}
+      <title>
+        GitHub Bugtracker
+      </title>
+      {router.pathname !== '/welcome' &&
+        <div>
+          <NavigationBar />
+          <div className="component">
             <Component {...pageProps} />
           </div>
-        }
-      </AuthWrapper>
+        </div>
+      }
+      {router.pathname === '/welcome' &&
+        <div className="component welcome">
+          <Component {...pageProps} />
+        </div>
+      }
+      {/* </AuthWrapper> */}
     </SessionProvider>
   )
 }
