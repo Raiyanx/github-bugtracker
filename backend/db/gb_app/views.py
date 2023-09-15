@@ -29,8 +29,6 @@ class UserView(View):
     for p in projects:
       newProject = Project(
         name = p["name"],
-        own_project = p["own_project"],
-        owner_email = p["owner_email"],
         link = p["link"]
       )
       newProject.save()
@@ -77,8 +75,6 @@ class ProjectView(View):
       if not projectsQueryset.exists() :
         newProject = Project(
           name=body["project_name"],
-          own_project=body["own_project"],
-          owner_email=body["owner_email"],
           link=body["link"]
         )
         newProject.save()

@@ -13,7 +13,7 @@ export default function NavigationBar() {
         <NavigationBarItem name="Home" href="/projects" />
         {session ?
           <NavigationBarItem name="Sign Out" onClick={() => signOut()} />
-          : <NavigationBarItem name="Sign In" onClick={() => signIn()} />
+          : <NavigationBarItem name="Sign In" onClick={() => signIn("github")} />
         }
       </div>
     </div>

@@ -29,3 +29,13 @@ export async function getProjects(data) {
   })
   return response.json()
 }
+
+export async function postProject(data) {
+  const response = await fetch(backendURL + "user/projects/", {
+    method: "POST",
+    headers: { "Content-type": "application/json" },
+    body: JSON.stringify(data),
+    credentials: 'include'
+  })
+  return response.json()
+}

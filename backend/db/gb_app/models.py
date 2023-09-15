@@ -10,8 +10,6 @@ class User(models.Model):
 
 class Project(models.Model):
   name = models.CharField(max_length=200)
-  own_project = models.BooleanField(default=True)
-  owner_email = models.EmailField()
   collaborators = models.ManyToManyField("User")
   link = models.CharField(max_length=1000)
   def __str__(self):

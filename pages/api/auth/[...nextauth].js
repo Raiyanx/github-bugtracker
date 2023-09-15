@@ -34,14 +34,28 @@ export const authOptions = {
       })
       let publicRepos = []
       let privateRepos = []
-      response.data.forEach(repo => {
+
+
+      await Promise.all(response.data.map(async repo => {
         if (!repo.fork) {
+          const collabResponse = await octokit.request('GET /repos/' + repo.owner.login + '/' + repo.name + '/collaborators', {
+            headers: {
+              'X-GitHub-Api-Version': '2022-11-28'
+            }
+          })
+          const collaborators = []
+          collabResponse.data.forEach(collab => collaborators.push(collab.login))
+          const obj = {
+            "full_name": repo.full_name,
+            "link": repo.html_url,
+            "collaborators": collaborators
+          }
           if (repo.private)
-            privateRepos.push(repo.full_name)
+            privateRepos.push(JSON.stringify(obj))
           else
-            publicRepos.push(repo.full_name)
+            publicRepos.push(JSON.stringify(obj))
         }
-      })
+      }))
       session.publicRepos = publicRepos
       session.privateRepos = privateRepos
 
