@@ -1,8 +1,8 @@
 import "../styles/global.css"
-import "../styles/variables.css"
 import NavigationBar from "../components/nav-bar"
 import { SessionProvider, useSession } from "next-auth/react"
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const AuthWrapper = (props) => {
   const { status } = useSession();
@@ -18,6 +18,8 @@ const AuthWrapper = (props) => {
     return props.children
   }
   if (status === "authenticated") {
+    // Setting width to accomodate for scrollbar
+    document.documentElement.style.width = document.body.clientWidth + 'px'
     if (router.pathname === '/welcome') {
       router.push('/')
       return <></>

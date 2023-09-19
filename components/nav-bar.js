@@ -1,6 +1,7 @@
 import styles from "../styles/nav-bar.module.css"
 import NavigationBarItem from "./nav-bar-item"
 import { useSession, signIn, signOut } from "next-auth/react"
+import Profile from "./profile-pic"
 
 export default function NavigationBar() {
   const { data: session } = useSession()
@@ -15,6 +16,7 @@ export default function NavigationBar() {
           <NavigationBarItem name="Sign Out" onClick={() => signOut()} />
           : <NavigationBarItem name="Sign In" onClick={() => signIn("github")} />
         }
+        <Profile />
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import styles from "../styles/nav-bar.module.css"
+import styles from "../styles/nav-bar-item.module.css"
 import { useRouter } from "next/router"
 
 export default function NavigationBarItem(props) {
