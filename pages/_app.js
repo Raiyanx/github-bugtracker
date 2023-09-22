@@ -2,7 +2,8 @@ import "../styles/global.css"
 import NavigationBar from "../components/nav-bar"
 import { SessionProvider, useSession } from "next-auth/react"
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { Provider } from 'react-redux'
+import store from "../store/store";
 
 const AuthWrapper = (props) => {
   const { status } = useSession();
@@ -36,22 +37,24 @@ export default function App({
   return (
     <SessionProvider session={session}>
       {/* <AuthWrapper> */}
-      <title>
-        GitHub Bugtracker
-      </title>
-      {router.pathname !== '/welcome' &&
-        <div>
-          <NavigationBar />
-          <div className="component">
+      <Provider store={store}>
+        <title>
+          GitHub Bugtracker
+        </title>
+        {router.pathname !== '/welcome' &&
+          <div>
+            <NavigationBar />
+            <div className="component">
+              <Component {...pageProps} />
+            </div>
+          </div>
+        }
+        {router.pathname === '/welcome' &&
+          <div className="component welcome">
             <Component {...pageProps} />
           </div>
-        </div>
-      }
-      {router.pathname === '/welcome' &&
-        <div className="component welcome">
-          <Component {...pageProps} />
-        </div>
-      }
+        }
+      </Provider>
       {/* </AuthWrapper> */}
     </SessionProvider>
   )

@@ -8,6 +8,8 @@ body {
   --button-hover: rgba(208, 215, 222, 0.32);
   --button-active: rgba(208, 215, 222, 0.48);
   --button-text: rgb(101, 109, 118);
+  position: static;
+  z-index: 0;
 }
 
 .component {
