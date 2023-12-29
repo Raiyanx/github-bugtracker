@@ -11,4 +11,5 @@ Technologies used to develop:
 
 Future thoughts:
 - CI/CD: Jenkins
+- Microservices implementation using Golang and gRPC
 - Testing and Logging
