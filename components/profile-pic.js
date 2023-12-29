@@ -3,12 +3,12 @@ import styles from "../styles/profile-pic.module.css"
 import { useState } from "react"
 import SideBar from "./side-bar"
 import { useSelector, useDispatch } from "react-redux"
-import { showBar, selectShow } from "../store/slices/sidebarSlice"
+import { showBar } from "../store/slices/sidebarSlice"
 import MiddlePlane from "./middleplane"
 
 export default function Profile() {
   const { data: session, status } = useSession()
-  const showSidebar = useSelector(selectShow)
+  const showSidebar = useSelector(state => state.sidebar.show)
   const dispatch = useDispatch()
   return (
     status === "authenticated" ?

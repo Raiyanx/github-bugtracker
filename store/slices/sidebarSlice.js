@@ -17,6 +17,4 @@ export const sidebarSlice = createSlice({
 
 export const { showBar, hideBar } = sidebarSlice.actions
 
-export const selectShow = state => state.sidebar.show
-
 export default sidebarSlice.reducer

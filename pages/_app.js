@@ -20,7 +20,7 @@ const AuthWrapper = (props) => {
   }
   if (status === "authenticated") {
     // Setting width to accomodate for scrollbar
-    document.documentElement.style.width = document.body.clientWidth + 'px'
+    // document.documentElement.style.width = document.body.clientWidth + 'px'
     if (router.pathname === '/welcome') {
       router.push('/')
       return <></>
@@ -36,26 +36,26 @@ export default function App({
   const router = useRouter()
   return (
     <SessionProvider session={session}>
-      {/* <AuthWrapper> */}
-      <Provider store={store}>
-        <title>
-          GitHub Bugtracker
-        </title>
-        {router.pathname !== '/welcome' &&
-          <div>
-            <NavigationBar />
-            <div className="component">
+      <AuthWrapper>
+        <Provider store={store}>
+          <title>
+            GitHub Bugtracker
+          </title>
+          {router.pathname !== '/welcome' &&
+            <div>
+              <NavigationBar />
+              <div className="component">
+                <Component {...pageProps} />
+              </div>
+            </div>
+          }
+          {router.pathname === '/welcome' &&
+            <div className="component welcome">
               <Component {...pageProps} />
             </div>
-          </div>
-        }
-        {router.pathname === '/welcome' &&
-          <div className="component welcome">
-            <Component {...pageProps} />
-          </div>
-        }
-      </Provider>
-      {/* </AuthWrapper> */}
+          }
+        </Provider>
+      </AuthWrapper>
     </SessionProvider>
   )
 }

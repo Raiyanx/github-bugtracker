@@ -14,13 +14,13 @@ export default function NewProject() {
       <div className={styles.subtitle}>
         Public Repositories:
       </div>
-      <div>
+      <div className={styles.projectList} >
         {publicRepos.map((r, index) => { return (<div key={index}> <Project name={r.full_name} link={r.link} collaborators={r.collaborators} /> </div>) })}
       </div>
       <div className={styles.subtitle}>
         Private Repositories:
       </div>
-      <div>
+      <div className={styles.projectList} >
         {privateRepos.map((r, index) => { return (<div key={index}> <Project name={r.full_name} link={r.link} collaborators={r.collaborators} /> </div>) })}
       </div>
     </div>

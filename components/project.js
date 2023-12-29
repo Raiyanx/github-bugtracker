@@ -3,22 +3,13 @@ import { postProject } from "../backend/utilities"
 
 export default function Project(props) {
 
-  function handleClick() {
-    const newProject = {
-      name: props.name,
-    }
-  }
-
   return (
-    <div className={styles.project}>
-      <div>
+    <div className={styles.project} onClick={() => window.open(props.link)}>
+      <div className={styles.projectName}>
         {props.name}
       </div>
-      <div>
-        {props.link}
-      </div>
-      <div>
-        {props.collaborators}
+      <div className={styles.collaborators}>
+        {props.collaborators.map(c => <div key={c} >{c}</div>)}
       </div>
     </div>
   )

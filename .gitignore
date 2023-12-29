@@ -20,3 +20,5 @@ media
 
 .my_pgpass
 .pg_service.conf
+
+local/

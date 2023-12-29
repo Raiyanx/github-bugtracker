@@ -1,0 +1,13 @@
+ARG ALPINE_VERSION=3.18.4
+
+FROM alpine:${ALPINE_VERSION}
+
+ARG ENV=DEV
+
+COPY db /db
+COPY requirements.txt .
+
+
+
+EXPOSE 8000
+
