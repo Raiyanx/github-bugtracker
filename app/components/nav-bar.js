@@ -1,4 +1,6 @@
-import styles from "../styles/nav-bar.module.css"
+"use client"
+
+import styles from "@Styles/nav-bar.module.css"
 import NavigationBarItem from "./nav-bar-item"
 import { useSession, signIn, signOut } from "next-auth/react"
 import Profile from "./profile-pic"

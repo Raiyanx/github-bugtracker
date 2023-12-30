@@ -1,4 +1,3 @@
-import NextAuth from "next-auth/next";
 import GithubProvider from "next-auth/providers/github"
 import { Octokit } from "@octokit/core";
 
@@ -63,8 +62,6 @@ export const authOptions = {
     }
   }
 }
-
-export default NextAuth(authOptions)
 
 
 /*

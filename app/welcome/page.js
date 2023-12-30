@@ -1,4 +1,6 @@
-import styles from "../styles/welcome.module.css"
+"use client"
+
+import styles from "@Styles/welcome.module.css"
 import { signIn } from "next-auth/react"
 
 export default function WelcomePage() {

@@ -1,5 +1,7 @@
+"use client"
+
 import { useSession } from "next-auth/react";
-import { getProjects } from "../../backend/utilities";
+import { getProjects } from "@Backend/utilities";
 import { useState, useEffect } from "react";
 
 export default function AllProjects() {

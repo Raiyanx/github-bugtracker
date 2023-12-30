@@ -1,8 +1,9 @@
-import styles from "../styles/project.module.css"
-import { postProject } from "../backend/utilities"
+"use client"
+
+import styles from "@Styles/project.module.css"
+import { postProject } from "@Backend/utilities"
 
 export default function Project(props) {
-
   return (
     <div className={styles.project} onClick={() => window.open(props.link)}>
       <div className={styles.projectName}>

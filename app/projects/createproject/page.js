@@ -1,6 +1,8 @@
+"use client"
+
 import { useSession } from "next-auth/react"
-import styles from "../../styles/createproject.module.css"
-import Project from "../../components/project"
+import styles from "@Styles/createproject.module.css"
+import Project from "@Components/project"
 
 export default function NewProject() {
   const { data: session } = useSession()

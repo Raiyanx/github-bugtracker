@@ -1,18 +1,22 @@
-import "../styles/global.css"
-import NavigationBar from "../components/nav-bar"
+"use client";
+
+import "@Styles/global.css"
+import NavigationBar from "@Components/nav-bar"
 import { SessionProvider, useSession } from "next-auth/react"
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next/navigation";
 import { Provider } from 'react-redux'
-import store from "../store/store";
+import store from "./store/store";
+
 
 const AuthWrapper = (props) => {
   const { status } = useSession();
   const router = useRouter()
+  const pathname = usePathname()
   if (status === "loading") {
     return <></> // Maybe replace with a loading page later
   }
   if (status === "unauthenticated") {
-    if (router.pathname !== '/welcome') {
+    if (pathname !== '/welcome') {
       router.push('/welcome')
       return <></>
     }
@@ -21,7 +25,7 @@ const AuthWrapper = (props) => {
   if (status === "authenticated") {
     // Setting width to accomodate for scrollbar
     // document.documentElement.style.width = document.body.clientWidth + 'px'
-    if (router.pathname === '/welcome') {
+    if (pathname === '/welcome') {
       router.push('/')
       return <></>
     }
@@ -29,33 +33,31 @@ const AuthWrapper = (props) => {
   }
 };
 
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps }
-}) {
-  const router = useRouter()
-  return (
-    <SessionProvider session={session}>
+export const Wrapper = ({ children }) => {
+  const pathname = usePathname()
+  return ( 
+    <SessionProvider>
       <AuthWrapper>
         <Provider store={store}>
           <title>
             GitHub Bugtracker
           </title>
-          {router.pathname !== '/welcome' &&
+          {pathname !== '/welcome' &&
             <div>
               <NavigationBar />
               <div className="component">
-                <Component {...pageProps} />
+                {children}
               </div>
             </div>
           }
-          {router.pathname === '/welcome' &&
+          {pathname === '/welcome' &&
             <div className="component welcome">
-              <Component {...pageProps} />
+              {children}
             </div>
           }
         </Provider>
       </AuthWrapper>
     </SessionProvider>
   )
-}
+};
+

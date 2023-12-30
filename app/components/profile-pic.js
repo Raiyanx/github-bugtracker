@@ -1,5 +1,7 @@
+"use client"
+
 import { useSession } from "next-auth/react"
-import styles from "../styles/profile-pic.module.css"
+import styles from "@Styles/profile-pic.module.css"
 import { useState } from "react"
 import SideBar from "./side-bar"
 import { useSelector, useDispatch } from "react-redux"

@@ -1,4 +1,6 @@
-import styles from "../styles/middleplane.module.css"
+"use client"
+
+import styles from "@Styles/middleplane.module.css"
 import { hideBar } from "../store/slices/sidebarSlice"
 import { useDispatch } from "react-redux"
 

@@ -1,4 +1,6 @@
-import styles from "../styles/side-bar.module.css"
+"use client"
+
+import styles from "@Styles/side-bar.module.css"
 import { hideBar } from "../store/slices/sidebarSlice"
 import { useDispatch } from "react-redux"
 

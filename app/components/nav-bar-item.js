@@ -1,5 +1,7 @@
-import styles from "../styles/nav-bar-item.module.css"
-import { useRouter } from "next/router"
+"use client"
+
+import styles from "@Styles/nav-bar-item.module.css"
+import { useRouter } from "next/navigation"
 
 export default function NavigationBarItem(props) {
   const router = useRouter()
