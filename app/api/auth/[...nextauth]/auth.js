@@ -1,5 +1,6 @@
 import GithubProvider from "next-auth/providers/github"
 import { Octokit } from "@octokit/core";
+import store from "lib/store/store"
 
 export const authOptions = {
   providers: [
@@ -21,8 +22,6 @@ export const authOptions = {
       return token
     },
     async session({ session, token, user }) {
-      session.accessToken = token.accessToken
-
       const octokit = new Octokit({
         auth: token.accessToken
       })
@@ -33,7 +32,6 @@ export const authOptions = {
       })
       let publicRepos = []
       let privateRepos = []
-
 
       await Promise.all(response.data.map(async repo => {
         if (!repo.fork) {
@@ -55,6 +53,7 @@ export const authOptions = {
             publicRepos.push(JSON.stringify(obj))
         }
       }))
+
       session.publicRepos = publicRepos
       session.privateRepos = privateRepos
 

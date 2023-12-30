@@ -4,8 +4,8 @@
     "paths": {
       "@Backend/*": ["./backend/*"],
       "@Components/*": ["./app/components/*"],
-      "@Lib/*": ["./app/lib/*"],
-      "@Styles/*": ["./app/styles/*"],
+      "@Styles/*": ["./lib/styles/*"],
+      "@Store/*": ["./lib/store/*"]
     }
   },
   "exclude": ["node_modules", "next"]

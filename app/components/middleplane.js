@@ -1,13 +1,22 @@
 "use client"
 
 import styles from "@Styles/middleplane.module.css"
-import { hideBar } from "../store/slices/sidebarSlice"
-import { useDispatch } from "react-redux"
+import { hideBar } from "../../lib/store/models/sidebar"
+import { connect } from "react-redux"
 
-export default function MiddlePlane() {
-  const dispatch = useDispatch()
+function MiddlePlane() {
   return (
-    <div className={styles.plane} onClick={() => dispatch(hideBar())}>
+    <div className={styles.plane} onClick={() => props.hideBar()}>
     </div>
   )
 }
+
+const mapState = (state) => ({
+
+})
+
+const mapDispatch = (dispatch) => ({
+  hideBar: () => dispatch.sidebar.hideBar()
+})
+
+export default connect(mapState, mapDispatch)(MiddlePlane);

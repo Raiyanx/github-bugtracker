@@ -19,7 +19,7 @@ function NewProject(props) {
   return (
     <div>
       <div className={styles.title}>
-        Choose a new repository to create a new project:
+        Here are all your Repositories:
       </div>
       <div className={styles.subtitle}>
         Public Repositories:
