@@ -3,10 +3,9 @@ kind: Service
 metadata:
   name: postgres
 spec:
-  type: ClusterIP
+  clusterIP: None
   selector:
     app: postgres
   ports:
     - port: 8000
-      targetPort: db-pod-port
-      protocol: TCP
+      name: db-port

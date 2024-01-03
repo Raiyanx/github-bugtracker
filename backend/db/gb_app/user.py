@@ -11,8 +11,15 @@ class UserView(View):
       params = request.GET
       userQueryset = User.objects.filter(github_email=params.get('github_email'))
       userQueryset.get()  # Checks that the queryset has one element
-      data = serializers.serialize("json", userQueryset)
-      data = json.loads(data)[0]
+      userData = serializers.serialize("json", userQueryset)
+      userData = json.loads(userData)[0]
+      data = {}
+      data["user"] = userData["fields"]
+      projectsQueryset = Project.objects.filter(owner__github_email=data["user"]["github_email"])
+      projectData = serializers.serialize("json", projectsQueryset)
+      projectData = json.loads(projectData)
+      print(projectData)
+      data["user"]["projects"] = [p["fields"] for p in projectData]
       data["message"] = "You retrieved a user"
       data["successful"] = True
       return JsonResponse(data)
@@ -61,6 +68,8 @@ class UserView(View):
       if not userQueryset:
         return JsonResponse({"message": "The user does not exist", "successful": False}) 
       userQueryset.delete()
+      # Also delete projects related to that user
+
       return JsonResponse({"message": "Successfully deleted user", "successful": True})
     except:
       return JsonResponse({"message": "Could not delete user", "successful": False})

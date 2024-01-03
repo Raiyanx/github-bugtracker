@@ -23,9 +23,9 @@ class Ticket(models.Model):
     CLOSED = "CD", _("Closed")
 
   name = models.CharField(max_length=200, null=True)
-  project = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+  project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="tickets", null=True)
   description = models.CharField(max_length=1000, null=True)
-  assigned_to = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+  assigned_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name="tickets", null=True)
   
   state = models.CharField(
     max_length=2,

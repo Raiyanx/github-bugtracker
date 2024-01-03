@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata: 
   name: postgres
   labels: 
@@ -18,9 +18,8 @@ spec:
         - name: db-container-name
           image: "postgres"
           ports:
-            - name: db-pod-port
-              containerPort: 8000
-              protocol: TCP
+            - containerPort: 8000
+              name: db-port
           env:
             - name: POSTGRES_PASSWORD
               valueFrom:
@@ -37,4 +36,11 @@ spec:
                 secretKeyRef:
                   name: postgres-secret
                   key: postgres_db
-            
+          volumeMounts:
+            - name: pgvolume
+              mountPath: "/var/lib/postgresql/data"
+      volumes:
+        - name: pgvolume
+          hostPath:
+            path: "/pgdata"
+            type: Directory
